@@ -11,7 +11,7 @@ pipeline {
         stage('1. Git Code Checkout') {
             steps {
                 // Clones your repository
-                git 'https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git'
+                git 'https://github.com/ajthebestssb/CICD-demo.git'
             }
         }
 
