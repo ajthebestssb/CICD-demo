@@ -18,17 +18,7 @@ pipeline {
             }
         }
 
-        stage('3. SonarQube Analysis (Optional)') {
-            // This stage will only run if you configure SonarQube in Jenkins
-            steps {
-                // 'MySonarQubeServer' must match the name in Jenkins configuration
-                withSonarQubeEnv('MySonarQubeServer') {
 
-                    // 'verify' runs tests again, 'sonar:sonar' sends the report//
-                    sh 'mvn verify sonar:sonar'
-                }
-            }
-        }
 
         stage('4. Archive Artifact') {
             steps {
