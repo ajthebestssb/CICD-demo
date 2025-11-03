@@ -8,12 +8,6 @@ pipeline {
     }
 
     stages {
-        stage('1. Git Code Checkout') {
-            steps {
-                // Clones your repository
-                git 'https://github.com/ajthebestssb/CICD-demo.git'
-            }
-        }
 
         stage('2. Compile, Build & Unit Test') {
             steps {
