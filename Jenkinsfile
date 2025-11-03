@@ -30,7 +30,7 @@ pipeline {
                 // 'MySonarQubeServer' must match the name in Jenkins configuration
                 withSonarQubeEnv('MySonarQubeServer') {
 
-                    // 'verify' runs tests again, 'sonar:sonar' sends the report
+                    // 'verify' runs tests again, 'sonar:sonar' sends the report//
                     sh 'mvn verify sonar:sonar'
                 }
             }
