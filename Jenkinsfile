@@ -30,14 +30,10 @@ pipeline {
 
         stage('5. Deployment') {
             steps {
-                echo 'DEBUG: Attempting to start application in foreground...'
+                echo 'Deploying application to port 8081...'
 
-                // We will run the app for 15 seconds to see its log.
-                // The build will be "Aborted" by the timeout, which is OK.
-                // We just want to read the console output from this stage.
-                timeout(time: 15, unit: 'SECONDS') {
-                    sh 'java -jar -Dserver.port=8081 target/cicd-demo-0.0.1-SNAPSHOT.jar'
-                }
+                // This is the permanent command to run in the background
+                sh 'nohup java -jar -Dserver.port=8081 target/cicd-demo-0.0.1-SNAPSHOT.jar > app.log 2>&1 &'
             }
         }
     }
