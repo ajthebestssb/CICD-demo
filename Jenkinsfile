@@ -30,11 +30,14 @@ pipeline {
 
         stage('5. Deployment') {
             steps {
-                echo 'Deploying application...'
-                // This command runs your Java application in the background
-                // 'nohup' means "no hang up" (it keeps running after the job ends)
-                // '... > app.log 2>&1 &' redirects all output to a file named 'app.log'
-                sh 'nohup java -jar -Dserver.port=8081 target/cicd-demo-0.0.1-SNAPSHOT.jar > app.log 2>&1 &'
+                echo 'DEBUG: Attempting to start application in foreground...'
+
+                // We will run the app for 15 seconds to see its log.
+                // The build will be "Aborted" by the timeout, which is OK.
+                // We just want to read the console output from this stage.
+                timeout(time: 15, unit: 'SECONDS') {
+                    sh 'java -jar -Dserver.port=8081 target/cicd-demo-0.0.1-SNAPSHOT.jar'
+                }
             }
         }
     }
