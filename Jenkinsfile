@@ -33,7 +33,7 @@ pipeline {
                 echo 'Deploying application to port 8081...'
 
                 // This is the permanent command to run in the background
-                sh 'BUILD_ID=dontKillMe nohup java -jar -Dserver.port=8081 target/cicd-demo-0.0.1-SNAPSHOT.jar > app.log 2>&1 &'
+                sh 'BUILD_ID=dontKillMe nohup $JAVA_HOME/bin/java -jar -Dserver.port=8081 target/cicd-demo-0.0.1-SNAPSHOT.jar > app.log 2>&1 &'
             }
         }
     }
